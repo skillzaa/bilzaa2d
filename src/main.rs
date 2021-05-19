@@ -7,10 +7,13 @@ fn main(){
     s.add_shape("oknice");
     s.add_shape("bell");
     s.add_shape("zin mate");
-    s.add_animation();
-    s.add_animation();
-    s.add_animation();
-    s.add_animation();
+    s.add_animation(1,
+        2,
+        5,
+        67,
+        777,
+        "counter",
+        "height");
     s.draw();
     // let mut s:Shape = Shape::new(55, 63);
     // println!("{:?}",s);

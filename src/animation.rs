@@ -1,22 +1,22 @@
 #[derive(Debug)]
 pub struct Animation {
-    pub from_second:i128,
-    pub to_second:i128,
-    pub from:i128,
-    pub to:i128,
+    pub from_second:u128,
+    pub to_second:u128,
+    pub from:u128,
+    pub to:u128,
     pub generator:String,
     pub attr_to_animate:String,
 }
 //==========================================
 impl Animation{
-    pub fn new()->Animation{
+    pub fn new(from_second:u128,to_second:u128,from:u128,to:u128,generator:&str,attr_to_animate:&str)->Animation{
         Animation {
-            from_second:0,
-            to_second:200,
-            from:200,
-            to:65000,
-            generator:String::from("some gen"),
-            attr_to_animate:String::from("width"),
+            from_second,
+            to_second,
+            from,
+            to,
+            generator:String::from(generator),
+            attr_to_animate:String::from(attr_to_animate),
             }
     }
 }//end of impl block

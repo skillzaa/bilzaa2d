@@ -1,5 +1,6 @@
 // mod super::;
 // use super::Animation;
+/**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use crate::Animation;
 #[derive(Debug)]
 pub struct Shape{
@@ -18,8 +19,8 @@ impl Shape{
             animations:Vec::new(),
         }
     }
-    pub fn add_animation(&mut self){
-        let a  = self::Animation::new();
+    pub fn add_animation(&mut self,a:Animation){
+        // let a  = self::Animation::new();
         self.animations.push(a);
         }
 }//end of impl block

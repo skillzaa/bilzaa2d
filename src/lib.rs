@@ -33,10 +33,11 @@ impl State {
             
         }
     }
-    pub fn add_animation(&mut self){
-       match self.shapes.get_mut(0) {
+    pub fn add_animation(&mut self, idx:usize,from_second:u128,to_second:u128,from:u128,to:u128,generator:&str,attr_to_animate:&str){
+       match self.shapes.get_mut(idx) {
             Some(s)=>{
-                s.add_animation();
+                let a =  Animation::new(from_second,to_second,from,to,generator,attr_to_animate);
+                s.add_animation(a);
             },
             _=>(),
        }
