@@ -10,6 +10,9 @@ pub struct Animation {
 //==========================================
 impl Animation{
     pub fn new(from_second:u128,to_second:u128,from:u128,to:u128,generator:&str,attr_to_animate:&str)->Animation{
+        if from_second > to_second {
+            panic!("To (second) cant be smaller than From (second)")
+        }
         Animation {
             from_second,
             to_second,
