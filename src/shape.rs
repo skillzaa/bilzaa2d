@@ -3,10 +3,10 @@
 use crate::Animation;
 #[derive(Debug)]
 pub struct Shape{
-    pub name:String,
-    pub no:u128,
-    pub id:u128,
-    pub animations:Vec<Animation>,
+    name:String,
+    no:u128,
+    id:u128,
+    animations:Vec<Animation>,
 }
 //==========================================
 impl Shape{
@@ -18,4 +18,8 @@ impl Shape{
             animations:Vec::new(),
         }
     }
+    pub fn add_animation(&mut self){
+        let a  = self::Animation::new();
+        self.animations.push(a);
+        }
 }//end of impl block

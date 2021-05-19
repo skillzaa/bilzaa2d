@@ -7,6 +7,7 @@ use shape::Shape;
 //===============================
 #[derive(Debug)]
 pub struct State {
+    //shapes is a simple vec being managed by lib
     shapes:Vec<Shape>,
     flag:bool,    
 }
@@ -34,9 +35,8 @@ impl State {
     }
     pub fn add_animation(&mut self){
        match self.shapes.get_mut(0) {
-            Some(x)=>{
-                let a = Animation::new();  
-                x.animations.push(a);
+            Some(s)=>{
+                s.add_animation();
             },
             _=>(),
        }
