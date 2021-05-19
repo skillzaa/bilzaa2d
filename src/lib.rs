@@ -37,7 +37,11 @@ impl State {
        match self.shapes.get_mut(idx) {
             Some(s)=>{
                 let a =  Animation::new(from_second,to_second,from,to,generator,attr_to_animate);
-                s.add_animation(a);
+                match  a {
+                    Ok(ani)=>s.add_animation(ani),
+                    Err(e)=> panic!("{:?}",e),
+                }
+                
             },
             _=>(),
        }

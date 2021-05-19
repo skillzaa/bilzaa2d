@@ -1,3 +1,4 @@
+use std::io::{Error,ErrorKind};
 #[derive(Debug)]
 pub struct Animation {
     pub from_second:u128,
@@ -8,18 +9,21 @@ pub struct Animation {
     pub attr_to_animate:String,
 }
 //==========================================
+
 impl Animation{
-    pub fn new(from_second:u128,to_second:u128,from:u128,to:u128,generator:&str,attr_to_animate:&str)->Animation{
+    pub fn new(from_second:u128,to_second:u128,from:u128,to:u128,generator:&str,attr_to_animate:&str)->Result<Animation,Error>{
         if from_second > to_second {
-            panic!("To (second) cant be smaller than From (second)")
+            Err(Error::new(ErrorKind::Other, "To (second) can not ne smaller than From (second)"))
+        }else{
+            Ok(Animation {
+                from_second,
+                to_second,
+                from,
+                to,
+                generator:String::from(generator),
+                attr_to_animate:String::from(attr_to_animate),
+            })
+
         }
-        Animation {
-            from_second,
-            to_second,
-            from,
-            to,
-            generator:String::from(generator),
-            attr_to_animate:String::from(attr_to_animate),
-            }
     }
 }//end of impl block

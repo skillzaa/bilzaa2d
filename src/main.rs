@@ -8,10 +8,10 @@ fn main(){
     s.add_shape("bell");
     s.add_shape("zin mate");
     s.add_animation(1,
-        2,
+        9,
         5,
         67,
-        777,
+        7,
         "counter",
         "height");
     s.draw();
