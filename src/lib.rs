@@ -1,5 +1,6 @@
 
 mod shape;
+//--if the fol 2 lines r removed the animation in shape mod disappear
 mod animation;
 use animation::Animation;
 use shape::Shape;
@@ -18,14 +19,8 @@ impl State {
         }
     }
     pub fn add_shape(&mut self,name:&str){
-        self.shapes.push(
-            Shape {
-                name: String::from(name),
-                no:444,
-                id:925,
-                animations:Vec::new(),
-            }
-        )
+        let s = shape::Shape::new(name);
+        self.shapes.push(s);
     }
     pub fn draw(&self){
         println!("Here are the Shapes");
@@ -40,14 +35,7 @@ impl State {
     pub fn add_animation(&mut self){
        match self.shapes.get_mut(0) {
             Some(x)=>{
-                let a = Animation  {
-                    from_second:0,
-                    to_second:100,
-                    from:200,
-                    to:660000,
-                    generator:String::from("generator"),
-                    attr_to_animate:String::from("width"),
-                };
+                let a = Animation::new();  
                 x.animations.push(a);
             },
             _=>(),
