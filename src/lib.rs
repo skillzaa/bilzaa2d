@@ -22,9 +22,9 @@ impl Bilzaa2d {
         }
     }
     pub fn add_shape(&mut self,name:&str){
-        let s = shape::Shape::new(name);
-        
-        self.shapes.push(s);
+        let mut s = shape::Shape::new(name);
+        // println!("This is attributes.get_bounding_rectangle_color from lib {} ",s.attributes.get_bounding_rectangle_color());
+        // self.shapes.push(s);
     }
     pub fn draw(&self){
         println!("Here are the Shapes");

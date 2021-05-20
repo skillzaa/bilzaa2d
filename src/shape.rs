@@ -5,24 +5,20 @@ use crate::attributes::{Attributes};
 
 #[derive(Debug)]
 pub struct Shape{
-    name:String,
-    no:u128,
-    id:u128,
-    animations:Vec<Animation>,
-    attributes:Attributes,
+           name:String,
+           animations:Vec<Animation>,
+    pub    attributes:Attributes,
 }
 //==========================================
 impl Shape{
     pub fn new(n:&str)->Shape{
-        let mut a = Attributes::new();
-            a.set_bounding_rectangle_color("pinkish borwn".to_string());
-        println!("if i see this then its a big success {}",a.get_bounding_rectangle_color());    
+        // let mut a = Attributes::new();
+        //     a.set_bounding_rectangle_color("pinkish borwn".to_string());
+        // println!("if i see this then its a big success {}",a.get_bounding_rectangle_color());    
        Shape {
             name:String::from(n),
-            no:453,
-            id:45432,
             animations:Vec::new(),
-            attributes:a,
+            attributes:Attributes::new(),
         }
     }
     pub fn add_animation(&mut self,a:Animation){
