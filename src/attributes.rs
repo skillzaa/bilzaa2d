@@ -1,24 +1,13 @@
 
-#[derive(Debug)]
-pub struct Attributes {
 
-name:String,
-width:u16,
-height:u16,
-
+pub fn get_new_attributes(){
 
 }
 
-impl Attributes {
-    pub fn new()->Attributes{
-        Attributes {
-            name: "some name".to_string(),
-            width : 44,
-            height : 99,
-        }
-    }
-    pub fn set(){
-        println!("set");
-    }
+pub fn set(){
+
+}
+
+pub fn get(){
     
 }

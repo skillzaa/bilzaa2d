@@ -1,28 +1,29 @@
 
 mod shape;
+mod bns;
+use bns::{Bns,BnsEnum};
 //--if the fol 2 lines r removed the animation in shape mod disappear
 mod animation;
 use animation::Animation;
 use shape::Shape;
-mod attributes;
-use attributes::Attributes;
 //===============================
 #[derive(Debug)]
-pub struct bilzaa2d {
+pub struct Bilzaa2d {
     //shapes is a simple vec being managed by lib
     shapes:Vec<Shape>,
     flag:bool,    
 }
 
-impl bilzaa2d {
-    pub fn new()->bilzaa2d{
-        bilzaa2d {
+impl Bilzaa2d {
+    pub fn new()->Bilzaa2d{
+        Bilzaa2d {
             shapes: Vec::new(),
             flag:true,
         }
     }
     pub fn add_shape(&mut self,name:&str){
         let s = shape::Shape::new(name);
+        
         self.shapes.push(s);
     }
     pub fn draw(&self){

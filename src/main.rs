@@ -1,6 +1,6 @@
-use bilzaa2d::bilzaa2d;
+use bilzaa2d::Bilzaa2d;
 fn main(){
-    let mut b2d = bilzaa2d::new();
+    let mut b2d = Bilzaa2d::new();
     b2d.add_shape("nima");
     b2d.add_shape("shah");
     b2d.add_shape("oknice");
