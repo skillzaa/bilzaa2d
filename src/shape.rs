@@ -14,8 +14,8 @@ pub struct Shape{
 //==========================================
 impl Shape{
     pub fn new(n:&str)->Shape{
-        let a = Attributes::new();
-
+        let mut a = Attributes::new();
+            a.set_width(8475125);
        Shape {
             name:String::from(n),
             no:453,

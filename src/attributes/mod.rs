@@ -23,40 +23,60 @@ impl Bns {
 #[derive(Debug)]
 
 pub struct Attributes{
-color:String,
-rotate_angle:u128,
-width:u128,
-height:u128,
+    //--strings
+    bounding_rectangle_color:String,
+    shadow_color:String,
+    name:String,
+    color:String,
+    //Flags
+    clockwise:bool,
+    opacity:u128,
+    filled:bool,
+    //Numbers
+    x:u128,
+    y:u128,
+    width:u128,
+    height:u128,
+    start_angle:u128,
+    line_width:u128,
+    shadow_blur:u128,
+    shadow_offset_x:u128,
+    shadow_offset_y:u128,
+    line_dash_size:u128,
+    line_dash_gap:u128,
+    draw_bounding_rectangle:u128,
+    bounding_rectangle_padding:u128,
 }
 impl Attributes {
     pub fn new()->Self{
         Attributes {
-            color: String::from("red"),
-            rotate_angle:45,
-            width:100,
-            height:100,
+    bounding_rectangle_color: String::from("red"),
+    shadow_color:String::from("red"),
+    name:String::from("red"),
+    color:String::from("red"),
+    clockwise:true,
+    filled:true,
+    opacity:3200,
+    x:3200,
+    y:3200,
+    width:3200,
+    height:3200,
+    start_angle:3200,
+    line_width:3200,
+    shadow_blur:3200,
+    shadow_offset_x:3200,
+    shadow_offset_y:3200,
+    line_dash_size:3200,
+    line_dash_gap:3200,
+    draw_bounding_rectangle:3200,
+    bounding_rectangle_padding:3200,
         }
     }
-    pub fn set(&mut self ,attrib_name:AttribValues,bns:Bns){
-            match bns.t {
-                BnsEnum::B => println!("its  a  bool"),
-                BnsEnum::N => {
-                  match attrib_name {
-                    AttribValues::width => {self.width = bns.n },
-                    _=>(),
-                  }  
-                },
-                BnsEnum::S => println!("its  a  string"),
-            }
+    pub fn set_width(&mut self,v:u128)->bool{
+        self.width = v;
+        true
     }
-    
-    pub fn get(){
-    
-    }
-    pub fn list(){
 
-    }
-}
+   
+}//impl Attributes
 
-
-//==========================================

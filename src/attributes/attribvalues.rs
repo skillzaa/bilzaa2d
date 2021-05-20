@@ -1,4 +1,24 @@
 #[derive(Debug)]
 pub enum AttribValues {
-width,height,color,name,    
+    Name,
+    X,
+    Y,
+    Width,
+    Height,
+    Clockwise,
+    CurrentRotateAngle,
+    Color,
+    Opacity,
+    LineWidth,
+    ShadowColor,
+    ShadowBlur,
+    ShadowOffsetX,
+    ShadowOffsetY,
+    Filled,
+    LineDashSize,
+    LineDashGap,
+    DrawBoundingRectangle,
+    BoundingRectangleColor,
+    BoundingRectanglePadding,
+    
 }
