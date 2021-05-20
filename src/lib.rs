@@ -8,16 +8,14 @@ use shape::Shape;
 //===============================
 #[derive(Debug)]
 pub struct Bilzaa2d {
-    //shapes is a simple vec being managed by lib
-    shapes:Vec<Shape>,
-    flag:bool,    
+    // shapes is a simple vec being managed by lib
+pub    shapes:Vec<Shape>,
 }
 
 impl Bilzaa2d {
     pub fn new()->Bilzaa2d{
         Bilzaa2d {
             shapes: Vec::new(),
-            flag:true,
         }
     }
     pub fn add_shape(&mut self,name:&str){
@@ -50,10 +48,10 @@ impl Bilzaa2d {
     }
 }//impl
 //////////////////////////////////////////
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+// #[cfg(test)]
+// mod tests {
+//     #[test]
+//     fn it_works() {
+//         assert_eq!(2 + 2, 4);
+//     }
+// }
