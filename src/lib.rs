@@ -1,8 +1,8 @@
 
 mod shape;
-mod bns;
-use bns::{Bns,BnsEnum};
-//--if the fol 2 lines r removed the animation in shape mod disappear
+mod attributes;
+use attributes::Attributes;
+
 mod animation;
 use animation::Animation;
 use shape::Shape;

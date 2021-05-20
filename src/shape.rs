@@ -1,7 +1,7 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
-use crate::Animation;//becomes visisble after r visible in lib.rs
-use crate::bns::{BnsEnum,Bns,AttributesHashMap};
+use crate::{Animation};//becomes visisble after r visible in lib.rs
 
+use crate::attributes::{Attributes,AttribValues,BnsEnum,Bns};
 
 #[derive(Debug)]
 pub struct Shape{
@@ -9,21 +9,20 @@ pub struct Shape{
     no:u128,
     id:u128,
     animations:Vec<Animation>,
-    attributes:AttributesHashMap,
+    attributes:Attributes,
 }
 //==========================================
 impl Shape{
     pub fn new(n:&str)->Shape{
-        let bns:Bns = Bns::new(true, 5214, "red".to_string(), BnsEnum::S);
-        let mut ahm:AttributesHashMap = AttributesHashMap::new();
-        ahm.insert("blablabla".to_string(),bns);
+        let mut a = Attributes::new();
+        a.set(AttribValues::width,Bns::new(true,5555,"ooo".to_string(),BnsEnum::N));
 
-        Shape {
+       Shape {
             name:String::from(n),
             no:453,
             id:45432,
             animations:Vec::new(),
-            attributes:ahm,
+            attributes:a,
         }
     }
     pub fn add_animation(&mut self,a:Animation){
