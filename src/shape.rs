@@ -15,7 +15,8 @@ pub struct Shape{
 impl Shape{
     pub fn new(n:&str)->Shape{
         let mut a = Attributes::new();
-            a.set_width(8475125);
+            a.set_bounding_rectangle_color("pinkish borwn".to_string());
+        println!("if i see this then its a big success {}",a.get_bounding_rectangle_color());    
        Shape {
             name:String::from(n),
             no:453,
@@ -26,5 +27,6 @@ impl Shape{
     }
     pub fn add_animation(&mut self,a:Animation){
         self.animations.push(a);
-        }
+    }
+    
 }//end of impl block

@@ -50,32 +50,43 @@ pub struct Attributes{
 impl Attributes {
     pub fn new()->Self{
         Attributes {
-    bounding_rectangle_color: String::from("red"),
-    shadow_color:String::from("red"),
-    name:String::from("red"),
-    color:String::from("red"),
-    clockwise:true,
-    filled:true,
-    opacity:3200,
-    x:3200,
-    y:3200,
-    width:3200,
-    height:3200,
-    start_angle:3200,
-    line_width:3200,
-    shadow_blur:3200,
-    shadow_offset_x:3200,
-    shadow_offset_y:3200,
-    line_dash_size:3200,
-    line_dash_gap:3200,
-    draw_bounding_rectangle:3200,
-    bounding_rectangle_padding:3200,
+        bounding_rectangle_color: String::from("red"),
+        shadow_color:String::from("red"),
+        name:String::from("red"),
+        color:String::from("red"),   
+        clockwise:true,
+        filled:true,
+        opacity:3200,
+        x:3200,
+        y:3200,
+        width:3200,
+        height:3200,
+        start_angle:3200,
+        line_width:3200,
+        shadow_blur:3200,
+        shadow_offset_x:3200,
+        shadow_offset_y:3200,
+        line_dash_size:3200,
+        line_dash_gap:3200,
+        draw_bounding_rectangle:3200,
+        bounding_rectangle_padding:3200,
         }
+    }
+    pub fn set_bounding_rectangle_color(&mut self,v:String)->bool{
+        self.bounding_rectangle_color = v;
+        true
+    }
+    pub fn get_bounding_rectangle_color(&mut self)->&str{
+        &self.bounding_rectangle_color
     }
     pub fn set_width(&mut self,v:u128)->bool{
         self.width = v;
         true
     }
+    pub fn get_width(&mut self)->u128{
+        self.width
+    }
+    
 
    
 }//impl Attributes
