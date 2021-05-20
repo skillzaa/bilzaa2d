@@ -1,5 +1,5 @@
-// mod super::;
-// use super::Animation;
+// use std::collections::HashMap;
+
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use crate::Animation;
 #[derive(Debug)]
@@ -8,6 +8,7 @@ pub struct Shape{
     no:u128,
     id:u128,
     animations:Vec<Animation>,
+    // attributes:HashMap<String,String>,
 }
 //==========================================
 impl Shape{
