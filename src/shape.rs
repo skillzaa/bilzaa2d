@@ -1,14 +1,15 @@
-// use std::collections::HashMap;
-
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
-use crate::Animation;
+use crate::Animation;//becomes visisble after r visible in lib.rs
+use crate::Attributes;//becomes visisble after r visible in lib.rs
+// use crate::A
+// use att
 #[derive(Debug)]
 pub struct Shape{
     name:String,
     no:u128,
     id:u128,
     animations:Vec<Animation>,
-    // attributes:HashMap<String,String>,
+    attributes:Attributes,
 }
 //==========================================
 impl Shape{
@@ -18,10 +19,10 @@ impl Shape{
             no:453,
             id:45432,
             animations:Vec::new(),
+            attributes: Attributes::new(),
         }
     }
     pub fn add_animation(&mut self,a:Animation){
-        // let a  = self::Animation::new();
         self.animations.push(a);
         }
 }//end of impl block

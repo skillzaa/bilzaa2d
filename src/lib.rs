@@ -4,17 +4,19 @@ mod shape;
 mod animation;
 use animation::Animation;
 use shape::Shape;
+mod attributes;
+use attributes::Attributes;
 //===============================
 #[derive(Debug)]
-pub struct State {
+pub struct bilzaa2d {
     //shapes is a simple vec being managed by lib
     shapes:Vec<Shape>,
     flag:bool,    
 }
 
-impl State {
-    pub fn new()->State{
-        State {
+impl bilzaa2d {
+    pub fn new()->bilzaa2d{
+        bilzaa2d {
             shapes: Vec::new(),
             flag:true,
         }

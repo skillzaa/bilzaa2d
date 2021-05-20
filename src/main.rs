@@ -1,18 +1,18 @@
-use bilzaa2d::State;
+use bilzaa2d::bilzaa2d;
 fn main(){
-    let mut s = State::new();
-    s.add_shape("nima");
-    s.add_shape("shah");
-    s.add_shape("oknice");
-    s.add_shape("bell");
-    s.add_shape("zin mate");
-    s.add_animation(1,
+    let mut b2d = bilzaa2d::new();
+    b2d.add_shape("nima");
+    b2d.add_shape("shah");
+    b2d.add_shape("oknice");
+    b2d.add_shape("bell");
+    b2d.add_shape("zin mate");
+    b2d.add_animation(1,
         2,
         5,
         67,
         7,
         "counter",
         "height");
-    s.draw();
-
+    b2d.draw();
+    
 }
