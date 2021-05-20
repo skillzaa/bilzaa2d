@@ -1,8 +1,6 @@
 
-#[derive(Debug)]
-pub enum AttribValues {
-width,height,color,name,    
-}
+mod attribvalues;
+use attribvalues::AttribValues;
 #[derive(Debug)]
 pub enum BnsEnum {B,N,S,}
 #[derive(Debug)]

@@ -1,7 +1,7 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use crate::{Animation};//becomes visisble after r visible in lib.rs
 
-use crate::attributes::{Attributes,AttribValues,BnsEnum,Bns};
+use crate::attributes::{Attributes};
 
 #[derive(Debug)]
 pub struct Shape{
@@ -14,8 +14,7 @@ pub struct Shape{
 //==========================================
 impl Shape{
     pub fn new(n:&str)->Shape{
-        let mut a = Attributes::new();
-        a.set(AttribValues::width,Bns::new(true,5555,"ooo".to_string(),BnsEnum::N));
+        let a = Attributes::new();
 
        Shape {
             name:String::from(n),
