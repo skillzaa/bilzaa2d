@@ -26,4 +26,7 @@ impl Animation{
 
         }
     }
+    pub fn animate(){
+        
+    }
 }//end of impl block

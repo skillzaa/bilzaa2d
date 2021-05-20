@@ -24,5 +24,8 @@ impl Shape{
     pub fn add_animation(&mut self,a:Animation){
         self.animations.push(a);
     }
+    pub fn update(){
+        
+    }
     
 }//end of impl block
