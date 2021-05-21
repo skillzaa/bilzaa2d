@@ -1,7 +1,7 @@
 use std::io::{Error,ErrorKind};
 
 mod shape;
-mod attributes;
+// use crate::bilzaa2dattributes;
 
 mod animation;
 use std::collections::HashMap;

@@ -1,7 +1,9 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use crate::{Animation};//becomes visisble after r visible in lib.rs
 
-use crate::attributes::{Attributes};
+use bilzaa2dattributes::Attributes;
+
+// use crate::attributes::{Attributes};
 
 #[derive(Debug)]
 pub struct Shape{
