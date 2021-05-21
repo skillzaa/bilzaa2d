@@ -76,15 +76,15 @@ impl Attributes {
         self.bounding_rectangle_color = v;
         true
     }
-    pub fn get_bounding_rectangle_color(&mut self)->&str{
+    pub fn get_bounding_rectangle_color(&self)->&str{
         &self.bounding_rectangle_color
     }
     pub fn set_width(&mut self,v:u128)->bool{
         self.width = v;
         true
     }
-    pub fn get_width(&mut self)->u128{
-        self.width
+    pub fn get_width(&self)->u128{
+        self.width.clone()
     }
     
 
