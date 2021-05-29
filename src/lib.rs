@@ -1,20 +1,15 @@
-use std::io::{Error,ErrorKind};
-
 mod shape;
-// use crate::bilzaa2dattributes;
-
-mod animation;
+// mod animation;
 use std::collections::HashMap;
-
-use animation::Animation;
+use bilzaa2dcounter::Animation;
 use shape::Shape;
-
+pub use playhead::PlayHead;
 //===============================
 #[derive(Debug)]
 pub struct Bilzaa2d {
 
     pub    components:HashMap<String,Shape>, 
-
+    pub    play_head:PlayHead,
     pub    shapes:Vec<Shape>,
 }
 
@@ -22,18 +17,22 @@ impl Bilzaa2d {
     pub fn new()->Bilzaa2d{
         Bilzaa2d {
             components: HashMap::new(),
+            play_head: PlayHead::new(100000, true),
             shapes: Vec::new(),
         }
     }
     pub fn add_shape(&mut self,name:&str){
-        let mut s = shape::Shape::new(name);
-        println!("This is attributes.get_bounding_rectangle_color from lib {} ",s.attributes.get_bounding_rectangle_color());
+        let s = shape::Shape::new(name);
+        // println!("This is attributes.get_bounding_rectangle_color from lib {} ",s.attributes.get_bounding_rectangle_color());
         self.shapes.push(s);
     }
     pub fn add_comp(&mut self,name:&str){
         let v:Shape = shape::Shape::new(name);
         
         self.components.insert(String::from(name),v);
+    }
+    pub fn get_comp(){
+        
     }
     pub fn draw(&self){
         println!("Here are the Shapes");
@@ -57,13 +56,13 @@ impl Bilzaa2d {
             }            
     }
     
-    pub fn add_animation(&mut self, idx:usize,from_second:u128,to_second:u128,from:u128,to:u128,generator:&str,attr_to_animate:&str){
+    pub fn add_animation(&mut self, idx:usize,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:&str){
        match self.shapes.get_mut(idx) {
             Some(s)=>{
-                let a =  Animation::new(from_second,to_second,from,to,generator,attr_to_animate);
+                let a =  Animation::new(from_second,to_second,from,to,attr_to_animate);
                 match  a {
-                    Ok(ani)=>s.add_animation(ani),
-                    Err(e)=> panic!("{:?}",e),
+                    Some(ani)=>s.add_animation(ani),
+                    None=> panic!("!!!"),
                 }
                 
             },

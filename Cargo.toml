@@ -8,3 +8,6 @@ edition = "2018"
 
 [dependencies]
 bilzaa2dattributes = "0.1.0"
+bilzaa2dcounter = "0.1.0"
+playhead = "0.0.3"
+uuid = { version = "0.8", features = ["serde", "v4"] }

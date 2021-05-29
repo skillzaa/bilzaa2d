@@ -1,12 +1,11 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use crate::{Animation};//becomes visisble after r visible in lib.rs
-
+use uuid::Uuid;
 use bilzaa2dattributes::Attributes;
-
-// use crate::attributes::{Attributes};
 
 #[derive(Debug)]
 pub struct Shape{
+           uuid:String,
            name:String,
            animations:Vec<Animation>,
     pub    attributes:Attributes,
@@ -14,10 +13,11 @@ pub struct Shape{
 //==========================================
 impl Shape{
     pub fn new(n:&str)->Shape{
-        // let mut a = Attributes::new();
-        //     a.set_bounding_rectangle_color("pinkish borwn".to_string());
-        // println!("if i see this then its a big success {}",a.get_bounding_rectangle_color());    
-       Shape {
+      
+        let my_uuid = Uuid::new_v4().to_hyphenated().to_string();
+
+        Shape {
+            uuid:String::from(my_uuid),
             name:String::from(n),
             animations:Vec::new(),
             attributes:Attributes::new(),
@@ -26,8 +26,8 @@ impl Shape{
     pub fn add_animation(&mut self,a:Animation){
         self.animations.push(a);
     }
-    pub fn update(){
-        
+    pub fn update(&mut self){
+    println!("{}",self.attributes.get_bounding_rectangle_color());
     }
     
 }//end of impl block

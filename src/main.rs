@@ -1,5 +1,7 @@
-use bilzaa2d::Bilzaa2d;
+use bilzaa2d::{PlayHead,Bilzaa2d};
 fn main(){
+    let mut ph = PlayHead::new(100000, true);
+    ph.play();
     let mut b2d = Bilzaa2d::new();
     b2d.add_shape("nima");
     b2d.add_comp("comp01");
@@ -9,9 +11,11 @@ fn main(){
         5,
         67,
         7,
-        "counter",
-        "height");
+        "height",
+        );
+       
+        
+    println!("{:?}",ph.time());    
     b2d.draw();
-    b2d.draw_comp("comp01");
-    
+    // b2d.shapes
 }
