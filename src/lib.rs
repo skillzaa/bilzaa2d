@@ -19,30 +19,25 @@ impl Bilzaa2d {
             play_head: PlayHead::new(100000, true),
         }
     }
-    pub fn add_shape(&mut self,name:&str){
-        let mut shp:Shape = shape::Shape::new(name);
-        self.shapes.insert(String::from(name),shp);
-        // println!("This is attributes.get_bounding_rectangle_color from lib {} ",shp.attributes.get_bounding_rectangle_color());
+    pub fn add_shape(&mut self,shape_name:&str)->&mut Shape{
+        let shp:Shape = shape::Shape::new(shape_name);
+        self.shapes.insert(String::from(shape_name),shp);
+        //-------------
+        match self.get_shape(shape_name) {
+            Some(a)=> return a,
+            None=>panic!("Could not create or retrieve shape"),
+        }
+   
     }
     pub fn update(){
         todo!();
     }
     pub fn draw(&self){
         for (name, shape) in &self.shapes {
+            println!("=========================={:?}===========",name);
             println!("Name:: {:?} Shape:: {:?}", name, shape);
         }
     }
-    
-    pub fn add_animation(&mut self, name:&str,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:&str){
-
-       match self.shapes.get_mut(name) {
-            Some(s)=>{
-               s.add_animation(from_second, to_second, from, to, attr_to_animate); 
-            },
-            _=>panic!("No Shape with this name found.."),
-       }
-    }
-    
     pub fn get_shape(&mut self,shape_name:&str)->Option<& mut Shape>{
         let s = self.shapes.get_mut(shape_name);
         match s {
