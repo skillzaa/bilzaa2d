@@ -8,7 +8,7 @@ use playhead::PlayHead;
 #[derive(Debug)]
 pub struct Bilzaa2d {
 
-    pub    shapes:HashMap<String,Shape>, 
+           shapes:HashMap<String,Shape>, 
     pub    play_head:PlayHead,
 }
 
@@ -36,16 +36,12 @@ impl Bilzaa2d {
     }
     
     pub fn add_animation(&mut self, name:&str,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:&str){
+
        match self.shapes.get_mut(name) {
             Some(s)=>{
-                let a =  Animation::new(from_second,to_second,from,to,attr_to_animate);
-                match  a {
-                    Some(ani)=>s.add_animation(ani),
-                    None=> panic!("!!!"),
-                }
-                
+               s.add_animation(from_second, to_second, from, to, attr_to_animate); 
             },
-            _=>(),
+            _=>panic!("No Shape with this name found.."),
        }
     }
 }//impl

@@ -21,8 +21,13 @@ impl Shape{
             attributes:Attributes::new(),
         }
     }
-    pub fn add_animation(&mut self,a:Animation){
-        self.animations.push(a);
+    pub fn add_animation(&mut self,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:&str){
+        let a =  Animation::new(from_second,to_second,from,to,attr_to_animate);
+        match a {
+            Some(aa)=>self.animations.push(aa),
+            None=>panic!("Failed to create an animation"),
+        }
+        
     }
     pub fn update(&mut self){
     println!("{}",self.attributes.get_bounding_rectangle_color());
