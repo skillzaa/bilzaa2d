@@ -29,9 +29,19 @@ impl Shape{
         }
         
     }
-    pub fn update(&mut self){
-    println!("{}",self.attributes.get_bounding_rectangle_color());
-    todo!("the shape ypdate fn");
+    pub fn update(&mut self,time:u128){
+    // println!("{}",self.attributes.get_bounding_rectangle_color());
+    
+        for ani in self.animations.iter() {
+            let ata = ani.get_attr_to_animate();
+            match ani.animate(time) {
+                Some(new_value)=>{
+                    println!("new attrib vlalue : {:?}",new_value);
+                    self.attributes.set_width(new_value);
+                },
+                None=> (),
+            }
+        }
     }
     
 }//end of impl block

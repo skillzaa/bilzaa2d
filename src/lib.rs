@@ -1,5 +1,4 @@
 mod shape;
-// mod animation;
 use std::collections::HashMap;
 use bilzaa2dcounter::Animation;
 use shape::Shape; //do not make this public
@@ -29,12 +28,16 @@ impl Bilzaa2d {
         }
    
     }
-    pub fn update(){
-        todo!();
+    pub fn update(&mut self, time:u128){
+        
+        for (_, shp) in self.shapes.iter_mut() {
+            shp.update(time);
+        }
+          
     }
     pub fn draw(&self){
         for (name, shape) in &self.shapes {
-            println!("=========================={:?}===========",name);
+            println!("=========================={:?}===========",&name);
             println!("Name:: {:?} Shape:: {:?}", name, shape);
         }
     }
@@ -55,10 +58,12 @@ impl Bilzaa2d {
     // }
 }//impl
 //////////////////////////////////////////
-// #[cfg(test)]
-// mod tests {
-//     #[test]
-//     fn it_works() {
-//         assert_eq!(2 + 2, 4);
-//     }
-// }
+#[cfg(test)]
+#[test]
+fn bilzaa2d_new() {
+    let mut b2d = Bilzaa2d::new();
+    let a = b2d.add_shape("nima");
+    let w = a.attributes.get_width();
+    assert!(w > 0);
+}
+
