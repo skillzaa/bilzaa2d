@@ -14,7 +14,17 @@ fn main(){
         "height",
         );
        
-    println!("{:?}",b2d.play_head.time());    
-    b2d.draw();
+    println!("Get Shape Test :: {:?}",b2d.get_shape("zeda"));    
+    let jj = b2d.get_shape("zeda").unwrap();
+    
+    let c = jj.attributes.get_bounding_rectangle_color();
+    println!("color :: {:?}",c);    
+    
+    /////////////////////////////
+    let t  = b2d.get_shape("zeda")
+    .unwrap().attributes.get_bounding_rectangle_color();
+    println!("color :: {:?}",t);    
+    // b2d.draw();
     // b2d.shapes
+    
 }

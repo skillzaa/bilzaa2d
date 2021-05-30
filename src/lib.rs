@@ -20,12 +20,10 @@ impl Bilzaa2d {
         }
     }
     pub fn add_shape(&mut self,name:&str){
-        let shp:Shape = shape::Shape::new(name);
+        let mut shp:Shape = shape::Shape::new(name);
         self.shapes.insert(String::from(name),shp);
-
         // println!("This is attributes.get_bounding_rectangle_color from lib {} ",shp.attributes.get_bounding_rectangle_color());
     }
-    
     pub fn update(){
         todo!();
     }
@@ -44,6 +42,22 @@ impl Bilzaa2d {
             _=>panic!("No Shape with this name found.."),
        }
     }
+    
+    pub fn get_shape(&mut self,shape_name:&str)->Option<& mut Shape>{
+        let s = self.shapes.get_mut(shape_name);
+        match s {
+            Some(ss)=> return Some(ss),
+            None=> return None,
+        }
+    }
+    //--idea dropped since it may not be correct idea
+    // pub fn set_attr(shape_name:&str,attr_name:&str,value:&str){
+    //     todo!();
+    // }
+    
+    // pub fn get_attr(){
+    //     todo!();
+    // }
 }//impl
 //////////////////////////////////////////
 // #[cfg(test)]
