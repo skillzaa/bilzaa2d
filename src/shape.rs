@@ -12,13 +12,11 @@ pub struct Shape{
 }
 //==========================================
 impl Shape{
-    pub fn new(n:&str)->Shape{
-      
+    pub fn new(name:&str)->Shape{
         let my_uuid = Uuid::new_v4().to_hyphenated().to_string();
-
         Shape {
             uuid:String::from(my_uuid),
-            name:String::from(n),
+            name:String::from(name),
             animations:Vec::new(),
             attributes:Attributes::new(),
         }
@@ -28,6 +26,7 @@ impl Shape{
     }
     pub fn update(&mut self){
     println!("{}",self.attributes.get_bounding_rectangle_color());
+    todo!("the shape ypdate fn");
     }
     
 }//end of impl block
