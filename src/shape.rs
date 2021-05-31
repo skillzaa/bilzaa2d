@@ -36,8 +36,44 @@ impl Shape{
                 let new_value = ani.animate(time)?;
                 let attr_to_animate = ani.get_attr_to_animate();
                     match attr_to_animate {
+                        AttributesEnum::Opacity=>{
+                            self.attributes.set_opacity(new_value);
+                        },
+                        AttributesEnum::X=>{
+                            self.attributes.set_x(new_value);
+                        },
+                        AttributesEnum::Y=>{
+                            self.attributes.set_y(new_value);
+                        },
                         AttributesEnum::Width=>{
                             self.attributes.set_width(new_value);
+                        },
+                        AttributesEnum::Height=>{
+                            self.attributes.set_height(new_value);
+                        },
+                        AttributesEnum::StartAngle=>{
+                            self.attributes.set_start_angle(new_value);
+                        },
+                        AttributesEnum::LineWidth=>{
+                            self.attributes.set_line_width(new_value);
+                        },
+                        AttributesEnum::ShadowBlur=>{
+                            self.attributes.set_shadow_blur(new_value);
+                        },
+                        AttributesEnum::ShadowOffsetX=>{
+                            self.attributes.set_shadow_offset_x(new_value);
+                        },
+                        AttributesEnum::ShadowOffsetY=>{
+                            self.attributes.set_shadow_offset_y(new_value);
+                        },
+                        AttributesEnum::LineDashGap=>{
+                            self.attributes.set_line_dash_gap(new_value);
+                        },
+                        AttributesEnum::LineDashSize=>{
+                            self.attributes.set_line_dash_size(new_value);
+                        },
+                        AttributesEnum::BoundingRectanglePadding=>{
+                            self.attributes.set_bounding_rectangle_padding(new_value);
                         },
                         _=>return None,
                     }                        

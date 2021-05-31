@@ -6,7 +6,6 @@ use playhead::PlayHead;
 //===============================
 #[derive(Debug)]
 pub struct Bilzaa2d {
-
            shapes:HashMap<String,Shape>, 
     pub    play_head:PlayHead,
 }
@@ -48,14 +47,6 @@ impl Bilzaa2d {
             None=> return None,
         }
     }
-    //--idea dropped since it may not be correct idea
-    // pub fn set_attr(shape_name:&str,attr_name:&str,value:&str){
-    //     todo!();
-    // }
-    
-    // pub fn get_attr(){
-    //     todo!();
-    // }
 }//impl
 //////////////////////////////////////////
 #[cfg(test)]
