@@ -1,7 +1,7 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use crate::{Animation};//becomes visisble after r visible in lib.rs
 use uuid::Uuid;
-use bilzaa2dattributes::Attributes;
+use bilzaa2dattributes::{Attributes,AttributesEnum};
 
 #[derive(Debug)]
 pub struct Shape{
@@ -21,7 +21,7 @@ impl Shape{
             attributes:Attributes::new(),
         }
     }
-    pub fn add_animation(&mut self,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:&str){
+    pub fn add_animation(&mut self,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:AttributesEnum){
         let a =  Animation::new(from_second,to_second,from,to,attr_to_animate);
         match a {
             Some(aa)=>self.animations.push(aa),
@@ -29,22 +29,20 @@ impl Shape{
         }
         
     }
-    pub fn update(&mut self,time:u128)->Option<u128>{
-    // println!("{}",self.attributes.get_bounding_rectangle_color());
-    
+    pub fn update(&mut self,time:u128)->Option<u128>{    
+        
         for ani in self.animations.iter() {
-            // let ata = ani.get_attr_to_animate();
-            match ani.animate(time) {
-                Some(new_value)=>{
-                    println!("new attrib vlalue : {:?}",new_value);
-                    self.attributes.set_width(new_value);
-                    ()
-                    
-                },
-                None=> return None,
-            }
-        }
-    return None    
+            // let valid = ani.is_time_valid(time)
+                let new_value = ani.animate(time)?;
+                let attr_to_animate = ani.get_attr_to_animate();
+                    match attr_to_animate {
+                        AttributesEnum::Width=>{
+                            self.attributes.set_width(new_value);
+                        },
+                        _=>return None,
+                    }                        
+        }  
+    return None;      
     }
     
 }//end of impl block
