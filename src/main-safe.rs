@@ -1,5 +1,3 @@
-use std::time::Duration;
-use std::thread;
 use bilzaa2d::Bilzaa2d;
 fn main(){
     let mut b2d = Bilzaa2d::new();
@@ -13,14 +11,12 @@ fn main(){
         100,
         0,
         "width");
-    
-    //=========================================    
-    //=========================================
-    thread::sleep(Duration::from_millis(3000));
-    //=========================================    
-    //=========================================    
-       
-        
+
+        for i in 0..10000000 {
+            let n = i+ 543;
+            let s = String::from("waste some time");
+            
+        }
     println!("Time ======>>>>>>>{:?}",b2d.play_head.time());    
     b2d.update(b2d.play_head.time());
     b2d.draw();    
