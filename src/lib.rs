@@ -1,6 +1,9 @@
+// mod bilzaa2dutil; -- this is req only for local
+pub use bilzaa2dutil::{BaseCounter,Animatable,AnimateResponses,AttributesEnum};
+
 mod shape;
 use std::collections::HashMap;
-use bilzaa2dcounter::Animation;
+// use bilzaa2dcounter::Animation;
 use shape::Shape; //do not make this public
 use playhead::PlayHead;
 //===============================

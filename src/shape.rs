@@ -1,13 +1,16 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
-use crate::{Animation};//becomes visisble after r visible in lib.rs
 use uuid::Uuid;
-use bilzaa2dattributes::{Attributes,AttributesEnum};
+use bilzaa2dutil::{BaseCounter,Animatable,AnimateResponses,AttributesEnum};
+
+use bilzaa2dattributes::{Attributes};
+
 
 #[derive(Debug)]
 pub struct Shape{
            uuid:String,
            name:String,
-           animations:Vec<Animation>,
+        // animations:Vec<BaseCounter>,
+           animations : Vec<Box<dyn Animatable>>,
     pub    attributes:Attributes,
 }
 //==========================================
@@ -21,14 +24,16 @@ impl Shape{
             attributes:Attributes::new(),
         }
     }
-    pub fn add_animation(&mut self,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:AttributesEnum){
-        let a =  Animation::new(from_second,to_second,from,to,attr_to_animate);
+    pub fn add_counter(&mut self,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:AttributesEnum){
+        let a =  BaseCounter::new(from_second,to_second,
+            from,to,attr_to_animate);
         match a {
-            Some(aa)=>self.animations.push(aa),
+            Some(aa)=>self.animations.push(Box::new(aa)),
             None=>panic!("Failed to create an animation"),
         }
         
     }
+    
     pub fn update(&mut self,time:u128)->Option<u128>{    
         
         for ani in self.animations.iter() {
@@ -37,43 +42,108 @@ impl Shape{
                 let attr_to_animate = ani.get_attr_to_animate();
                     match attr_to_animate {
                         AttributesEnum::Opacity=>{
-                            self.attributes.set_opacity(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_opacity(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::X=>{
-                            self.attributes.set_x(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_x(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::Y=>{
-                            self.attributes.set_y(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_y(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::Width=>{
-                            self.attributes.set_width(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_width(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::Height=>{
-                            self.attributes.set_height(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_height(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::StartAngle=>{
-                            self.attributes.set_start_angle(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_start_angle(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::LineWidth=>{
-                            self.attributes.set_line_width(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_line_width(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::ShadowBlur=>{
-                            self.attributes.set_shadow_blur(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_shadow_blur(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::ShadowOffsetX=>{
-                            self.attributes.set_shadow_offset_x(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_shadow_offset_x(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::ShadowOffsetY=>{
-                            self.attributes.set_shadow_offset_y(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_shadow_offset_y(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::LineDashGap=>{
-                            self.attributes.set_line_dash_gap(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_line_dash_gap(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::LineDashSize=>{
-                            self.attributes.set_line_dash_size(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_line_dash_size(u);
+                                },
+                                _=>(),
+                            }
                         },
                         AttributesEnum::BoundingRectanglePadding=>{
-                            self.attributes.set_bounding_rectangle_padding(new_value);
+                            match new_value {
+                                AnimateResponses::U128(u)=>{
+                                    self.attributes.set_bounding_rectangle_padding(u);
+                                },
+                                _=>(),
+                            }
                         },
                         _=>return None,
                     }                        
