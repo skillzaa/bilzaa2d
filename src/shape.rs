@@ -1,17 +1,15 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use uuid::Uuid;
-use bilzaa2dutil::{BaseCounter,Animatable,AnimateResponses,AttributesEnum};
-
-use bilzaa2dattributes::{Attributes};
-
+use bilzaa2dutil::{Animatable, AnimateResponses, Attributes, AttributesEnum, BaseCounter};
 
 #[derive(Debug)]
+// #[derive(PartialEq)]
 pub struct Shape{
            uuid:String,
            name:String,
         // animations:Vec<BaseCounter>,
            animations : Vec<Box<dyn Animatable>>,
-    pub    attributes:Attributes,
+    pub    attr:Attributes,
 }
 //==========================================
 impl Shape{
@@ -19,19 +17,20 @@ impl Shape{
         let my_uuid = Uuid::new_v4().to_hyphenated().to_string();
         Shape {
             uuid:String::from(my_uuid),
-            name:String::from(name),
+            name: name.to_string(),
             animations:Vec::new(),
-            attributes:Attributes::new(),
+            attr:Attributes::new(),
         }
     }
-    pub fn add_counter(&mut self,from_second:u128,to_second:u128,from:u128,to:u128,attr_to_animate:AttributesEnum){
-        let a =  BaseCounter::new(from_second,to_second,
-            from,to,attr_to_animate);
-        match a {
-            Some(aa)=>self.animations.push(Box::new(aa)),
-            None=>panic!("Failed to create an animation"),
-        }
-        
+    pub fn add_animation(&mut self,ani: impl Animatable + 'static)->Option<bool>{
+       self.animations.push(Box::new(ani));
+       Some(true)       
+    }
+    pub fn add_fake_counter(&mut self)->Option<bool>{
+        let ani = BaseCounter::new(0.0,
+        5.0,1,100,AttributesEnum::Height)?;
+        self.animations.push(Box::new(ani));
+        Some(true)
     }
     
     pub fn update(&mut self,time:u128)->Option<u128>{    
@@ -44,7 +43,7 @@ impl Shape{
                         AttributesEnum::Opacity=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_opacity(u);
+                                    self.attr.set_opacity(u);
                                 },
                                 _=>(),
                             }
@@ -52,7 +51,7 @@ impl Shape{
                         AttributesEnum::X=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_x(u);
+                                    self.attr.set_x(u);
                                 },
                                 _=>(),
                             }
@@ -60,7 +59,7 @@ impl Shape{
                         AttributesEnum::Y=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_y(u);
+                                    self.attr.set_y(u);
                                 },
                                 _=>(),
                             }
@@ -68,7 +67,7 @@ impl Shape{
                         AttributesEnum::Width=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_width(u);
+                                    self.attr.set_width(u);
                                 },
                                 _=>(),
                             }
@@ -76,7 +75,7 @@ impl Shape{
                         AttributesEnum::Height=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_height(u);
+                                    self.attr.set_height(u);
                                 },
                                 _=>(),
                             }
@@ -84,7 +83,7 @@ impl Shape{
                         AttributesEnum::StartAngle=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_start_angle(u);
+                                    self.attr.set_start_angle(u);
                                 },
                                 _=>(),
                             }
@@ -92,7 +91,7 @@ impl Shape{
                         AttributesEnum::LineWidth=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_line_width(u);
+                                    self.attr.set_line_width(u);
                                 },
                                 _=>(),
                             }
@@ -100,7 +99,7 @@ impl Shape{
                         AttributesEnum::ShadowBlur=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_shadow_blur(u);
+                                    self.attr.set_shadow_blur(u);
                                 },
                                 _=>(),
                             }
@@ -108,7 +107,7 @@ impl Shape{
                         AttributesEnum::ShadowOffsetX=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_shadow_offset_x(u);
+                                    self.attr.set_shadow_offset_x(u);
                                 },
                                 _=>(),
                             }
@@ -116,7 +115,7 @@ impl Shape{
                         AttributesEnum::ShadowOffsetY=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_shadow_offset_y(u);
+                                    self.attr.set_shadow_offset_y(u);
                                 },
                                 _=>(),
                             }
@@ -124,7 +123,7 @@ impl Shape{
                         AttributesEnum::LineDashGap=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_line_dash_gap(u);
+                                    self.attr.set_line_dash_gap(u);
                                 },
                                 _=>(),
                             }
@@ -132,7 +131,7 @@ impl Shape{
                         AttributesEnum::LineDashSize=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_line_dash_size(u);
+                                    self.attr.set_line_dash_size(u);
                                 },
                                 _=>(),
                             }
@@ -140,7 +139,7 @@ impl Shape{
                         AttributesEnum::BoundingRectanglePadding=>{
                             match new_value {
                                 AnimateResponses::U128(u)=>{
-                                    self.attributes.set_bounding_rectangle_padding(u);
+                                    self.attr.set_bounding_rectangle_padding(u);
                                 },
                                 _=>(),
                             }
