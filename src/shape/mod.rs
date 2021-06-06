@@ -156,6 +156,7 @@ impl Shape{
     
 }//end of impl block
 
-fn get_draw_data()->DataNode{
-todo!();
+fn get_draw_data()->Option<DataNode>{
+    
+    Some(DataNode::new('c', 44, 21)?)
 }
