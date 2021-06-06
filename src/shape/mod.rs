@@ -1,14 +1,16 @@
 /**Making Animation is not its job that is done out side by lib and animation mod. shape just has to add it */
 use uuid::Uuid;
 use bilzaa2dutil::{Animatable, AnimateResponses, Attributes, AttributesEnum, BaseCounter};
+mod datanode;
+use datanode::DataNode;
 
 #[derive(Debug)]
 // #[derive(PartialEq)]
 pub struct Shape{
            uuid:String,
            name:String,
-        // animations:Vec<BaseCounter>,
            animations : Vec<Box<dyn Animatable>>,
+           data : Vec<DataNode>,
     pub    attr:Attributes,
 }
 //==========================================
@@ -19,6 +21,7 @@ impl Shape{
             uuid:String::from(my_uuid),
             name: name.to_string(),
             animations:Vec::new(),
+            data:Vec::new(),
             attr:Attributes::new(),
         }
     }
@@ -150,4 +153,9 @@ impl Shape{
     return None;      
     }
     
+    
 }//end of impl block
+
+fn get_draw_data()->DataNode{
+todo!();
+}

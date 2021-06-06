@@ -1,4 +1,6 @@
 add_shape
+insert_shape
 add_animation
+insert_animation
 shape.get_ATTR_NAME
 shape.set_ATTR_NAME
